@@ -1,0 +1,15 @@
+{
+  "name": "@york-ie-labs/slate-lists",
+  "version": "0.0.0",
+  "description": "Lists (ol, ul) plugin for the latest version of slate.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "slate",
+    "plugins"
+  ],
+  "author": "anothrNick",
+  "license": "MIT"
+}
