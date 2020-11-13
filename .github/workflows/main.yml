@@ -14,6 +14,7 @@ jobs:
         uses: anothrNick/github-tag-action@1.32.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_BRANCHES: main
         id: bump_version
       - name: use Node.js 10.x
         uses: actions/setup-node@v1
