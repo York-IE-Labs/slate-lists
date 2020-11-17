@@ -6,6 +6,7 @@ import isHotkey from "is-hotkey";
 
 import withMarkdown from "./plugins/Markdown";
 import { withLists, indentItem, undentItem } from "@york-ie-labs/slate-lists";
+// import { withLists, indentItem, undentItem } from "./plugins/LocalList";
 import initialState from "./initial";
 
 const Leaf = ({ attributes, children, leaf }) => {
@@ -60,7 +61,6 @@ const Editor = ({ value, setValue }) => {
   };
 
   const update = (value) => {
-    console.log(value);
     setValue(value);
   };
 
