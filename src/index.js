@@ -1,5 +1,7 @@
 import { Editor, Transforms, Range, Point } from "slate";
 
+const defaultMax = 5;
+
 // withLists handles behavior regarding ol and ul lists
 // more specifically, withLists properly exits the list with `enter` or `backspace`
 // from an empty list item, transforming the node to a paragraph
@@ -104,7 +106,7 @@ const undentItem = (editor) => {
   }
 };
 
-const indentItem = (editor) => {
+const indentItem = (editor, maxDepth = defaultMax) => {
   const { selection } = editor;
 
   // check that there is a current selection without highlight
@@ -117,10 +119,16 @@ const indentItem = (editor) => {
     if (match) {
       // wrap the list item into another list to indent it within the DOM
       const [listMatch] = Editor.nodes(editor, {
+        mode: "lowest",
         match: (n) => n.type === "bulleted-list",
       });
-      let listType = listMatch ? "bulleted-list" : "numbered-list";
-      Transforms.wrapNodes(editor, { type: listType, children: [] });
+      if (listMatch) {
+        let depth = listMatch[1].length;
+        if (depth <= maxDepth) {
+          let listType = listMatch ? "bulleted-list" : "numbered-list";
+          Transforms.wrapNodes(editor, { type: listType, children: [] });
+        }
+      }
     }
   }
 };
