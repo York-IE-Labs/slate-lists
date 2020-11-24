@@ -56,7 +56,7 @@ const Editor = ({ value, setValue }) => {
   };
 
   return (
-    <Slate editor={editor} value={(value) => setValue(value)} onChange={update}>
+    <Slate editor={editor} value={value} onChange={(value) => setValue(value)}>
       <Editable
         autoFocus={true}
         onKeyDown={onKeyDown}
