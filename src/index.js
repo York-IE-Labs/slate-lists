@@ -120,13 +120,16 @@ const indentItem = (editor, maxDepth = defaultMax) => {
       // wrap the list item into another list to indent it within the DOM
       const [listMatch] = Editor.nodes(editor, {
         mode: "lowest",
-        match: (n) => n.type === "bulleted-list",
+        match: (n) => n.type === "bulleted-list" || n.type === "numbered-list",
       });
+
       if (listMatch) {
         let depth = listMatch[1].length;
         if (depth <= maxDepth) {
-          let listType = listMatch ? "bulleted-list" : "numbered-list";
-          Transforms.wrapNodes(editor, { type: listType, children: [] });
+          Transforms.wrapNodes(editor, {
+            type: listMatch[0].type,
+            children: [],
+          });
         }
       }
     }
