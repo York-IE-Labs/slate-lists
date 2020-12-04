@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@york-ie-labs/slate-lists": "^0.0.0",
+    "@york-ie-labs/slate-lists": "^0.5.0",
     "is-hotkey": "^0.1.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
